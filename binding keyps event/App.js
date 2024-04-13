@@ -23,19 +23,31 @@ function App() {
   }, [searchText])
 
 
+//   return (
+//     <div>
+//       <Navbar searchText={searchText} setSearchText={setSearchText} />
+//       <Switch>
+//         <Route path="/" exact>
+//           <Home />
+//         </Route>
+//         <Route path="/about" component={AboutView} />
+//         <Route path="/search">
+//           <SearchView keyword={searchText} searchResults={searchResults} />
+//         </Route>
+//         <Route path="/movies/:id" component={MovieView} />
+//       </Switch>
+//     </div>
+//   );
+// }
+
   return (
     <div>
-      <Navbar searchText={searchText} setSearchText={setSearchText} />
-      <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/about" component={AboutView} />
-        <Route path="/search">
-          <SearchView keyword={searchText} searchResults={searchResults} />
-        </Route>
-        <Route path="/movies/:id" component={MovieView} />
-      </Switch>
+      <Navbar searchText={searchText} setSearchResults={setSearchResults} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/search" element={<SearchView keyword={searchText} searchResults={searchResults} />} />
+      </Routes>
     </div>
   );
 }
